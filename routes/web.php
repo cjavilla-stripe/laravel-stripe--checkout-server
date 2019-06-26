@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/checkout', function () {
   // Replace sk_test_xxx with your key.
-  \Stripe\Stripe::setApiKey('sk_test_xxx');
+  \Stripe\Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
     $session = \Stripe\Checkout\Session::create([
       'payment_method_types' => ['card'],

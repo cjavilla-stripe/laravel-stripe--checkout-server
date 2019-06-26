@@ -13,13 +13,12 @@
 </button>
 
 <script>
-  // replace pk_test_xxx with your key...
-  var stripe = Stripe('pk_test_xxx');
+  var stripe = Stripe("{{ env('STRIPE_PUBLISHABLE_KEY') }}");
   document.getElementById("pay-with-stripe").addEventListener("click", function(){
     stripe.redirectToCheckout({
       // Make the id field from the Checkout Session creation API response
       // available to this file, so you can provide it as parameter here
-      sessionId: '{{$session_id}}'
+      sessionId: '{{ $session_id }}'
     }).then(function (result) {
       // If `redirectToCheckout` fails due to a browser or network
       // error, display the localized error message to your customer
